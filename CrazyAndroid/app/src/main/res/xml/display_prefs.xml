@@ -8,6 +8,7 @@
         android:dialogTitle="请选择灯光强度"
         android:entries="@array/light_strength_list"
         android:entryValues="@array/light_value_list"
+
         />
 </PreferenceCategory>
 </PreferenceScreen>
