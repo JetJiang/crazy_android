@@ -21,8 +21,8 @@
             android:title="性别"
             android:summary="请选择性别"
             android:dialogTitle="ListPreference"
-            android:entries="xiaohong"
-            android:entryValues="xiaohua"
+            android:entries="@array/gender_name_list"
+            android:entryValues="@array/gender_value_list"
             />
     </PreferenceCategory>
     <PreferenceCategory>
@@ -31,7 +31,6 @@
             android:title="自动保存进度"
             android:summaryOn="自动保存:开启"
             android:summaryOff="自动保存:关闭"
-            android:defaultValue="true"
-            />
+            android:defaultValue="true"/>
     </PreferenceCategory>
 </PreferenceScreen>
