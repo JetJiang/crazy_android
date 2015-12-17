@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceCategory>
+    <ListPreference
+        android:key="light"
+        android:title="灯光强度"
+        android:summary="请选择灯光强度"
+        android:dialogTitle="请选择灯光强度"
+        android:entries="@array/light_strength_list"
+        android:entryValues="@array/light_value_list"
+        />
+</PreferenceCategory>
+</PreferenceScreen>
