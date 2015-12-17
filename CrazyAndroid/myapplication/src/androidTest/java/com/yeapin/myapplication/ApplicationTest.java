@@ -1,4 +1,4 @@
-package com.yeapin.appsecond;
+package com.yeapin.myapplication;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
