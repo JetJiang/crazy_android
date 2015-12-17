@@ -16,6 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".ExpandableListActivityTest"
+            android:label="@string/title_activity_expandable_list_activity_test" >
+        </activity>
+        <activity android:name=".PreferenceActivityTest"
+            android:label="设置程序参数">
+        </activity>
     </application>
 
 </manifest>

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceFragment;
 import android.widget.Button;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -36,12 +37,16 @@ public class PreferenceActivityTest extends PreferenceActivity {
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.preferences);
         }
     }
     public static class Prefs2Fragment extends PreferenceFragment{
         @Override
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
+            addPreferencesFromResource(R.xml.display_prefs);
+            String website = getArguments().getString("website");
+            Toast.makeText(getActivity(),"Õ¯’æ”Ú√˚ «£∫"+website,Toast.LENGTH_SHORT).show();
         }
     }
 }
