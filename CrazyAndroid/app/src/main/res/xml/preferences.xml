@@ -14,8 +14,7 @@
             android:key="name"
             android:title="填写用户名"
             android:summary="填写您的用户名"
-            android:dialogTitle="ListPreference"
-                        />
+            android:dialogTitle="ListPreference"/>
         <ListPreference
             android:key="gender"
             android:title="性别"
