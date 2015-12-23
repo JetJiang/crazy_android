@@ -1,1 +1,1 @@
-include ':app', 'activitylifetest'
+include ':app', ':dialogtest', 'activitylifetest'
