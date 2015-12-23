@@ -26,6 +26,11 @@
             android:name="com.android.crazy.activitylifetest.SecondActivity"
             android:label="@string/title_activity_second" >
         </activity>
+        <activity
+            android:name="com.android.crazy.activitylifetest.DialogStyleActivity"
+            android:label="@string/dialogStyleActivity"
+            android:theme="@android:style/Theme.Dialog" >
+        </activity>
     </application>
 
 </manifest>

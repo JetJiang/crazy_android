@@ -194,6 +194,7 @@
     <eat-comment/>
     <string name="action_settings">Settings</string>
     <string name="app_name">ActivityLifeTest</string>
+    <string name="dialogStyleActivity">DialogStyleActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="secondeActivityText">This is SecondActivity</string>
     <string name="title_activity_second">SecondActivity</string>

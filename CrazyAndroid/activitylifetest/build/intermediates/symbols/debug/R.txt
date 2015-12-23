@@ -542,9 +542,10 @@ int string abc_shareactionprovider_share_with_application 0x7f06000c
 int string abc_toolbar_collapse_description 0x7f060010
 int string action_settings 0x7f060011
 int string app_name 0x7f060012
-int string hello_world 0x7f060013
-int string secondeActivityText 0x7f060014
-int string title_activity_second 0x7f060015
+int string dialogStyleActivity 0x7f060013
+int string hello_world 0x7f060014
+int string secondeActivityText 0x7f060015
+int string title_activity_second 0x7f060016
 int style AlertDialog_AppCompat 0x7f08006b
 int style AlertDialog_AppCompat_Light 0x7f08006c
 int style Animation_AppCompat_Dialog 0x7f08006d
