@@ -1,30 +1,39 @@
 package com.android.crazy.dialogtest;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.TextPaint;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.crazy.dialog.DialogModel;
 
 /**
- *Jet
- *
- * */
+ * ExpandableListView
+ * Jet
+ */
 public class MainActivity extends Activity {
 
     private ExpandableListView expandableListView;
-    private String[] dlgGroup = new String[]{"ä½¿ç”¨AlertDialogåˆ›å»ºå¯¹è¯æ¡†","å¯¹è¯æ¡†é£æ ¼çš„Activity","PopupWindow","ProgressDialog","æ—¶é—´é€‰æ‹©å¯¹è¯æ¡†"};
+    private String[] dlgGroup = new String[]{"Ê¹ÓÃAlertDialog´´½¨¶Ô»°¿ò", "¶Ô»°¿ò·ç¸ñµÄActivity", "PopupWindow", "ProgressDialog", "Ê±¼äÑ¡Ôñ¶Ô»°¿ò"};
     private String[][] dlgChild = new String[][]{
-            {"æç¤ºæ¶ˆæ¯çš„å¯¹è¯æ¡†","ç®€å•åˆ—è¡¨é¡¹å¯¹è¯æ¡†","å•é€‰åˆ—è¡¨é¡¹å¯¹è¯æ¡†","å¤šé€‰åˆ—è¡¨é¡¹å¯¹è¯æ¡†","è‡ªå®šä¹‰åˆ—è¡¨é¡¹å¯¹è¯æ¡†","è‡ªå®šä¹‰Viewå¯¹è¯æ¡†"},
+            {"ÌáÊ¾ÏûÏ¢µÄ¶Ô»°¿ò", "¼òµ¥ÁĞ±íÏî¶Ô»°¿ò", "µ¥Ñ¡ÁĞ±íÏî¶Ô»°¿ò", "¶àÑ¡ÁĞ±íÏî¶Ô»°¿ò", "×Ô¶¨ÒåÁĞ±íÏî¶Ô»°¿ò", "×Ô¶¨ÒåView¶Ô»°¿ò"},
             {},
             {},
             {},
-            {"DatePickerDialog","TimePickerDialog"}
+            {"DatePickerDialog", "TimePickerDialog"}
     };
 
 
@@ -32,58 +41,140 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        expandableListView = (ExpandableListView)findViewById(R.id.expand_list);
+        expandableListView = (ExpandableListView) findViewById(R.id.expand_list);
         ExpandableListAdapter adapter = new BaseExpandableListAdapter() {
             @Override
             public int getGroupCount() {
-                return 0;
+
+                return dlgGroup.length;
             }
 
             @Override
             public int getChildrenCount(int groupPosition) {
-                return 0;
+
+                return dlgChild[groupPosition].length;
             }
 
             @Override
             public Object getGroup(int groupPosition) {
-                return null;
+
+                return dlgGroup[groupPosition];
             }
 
             @Override
             public Object getChild(int groupPosition, int childPosition) {
-                return null;
+
+                return dlgChild[groupPosition][childPosition];
             }
 
             @Override
             public long getGroupId(int groupPosition) {
-                return 0;
+
+                return groupPosition;
             }
 
             @Override
             public long getChildId(int groupPosition, int childPosition) {
-                return 0;
+
+                return childPosition;
             }
 
             @Override
             public boolean hasStableIds() {
-                return false;
+                return true;
             }
 
             @Override
             public View getGroupView(int groupPosition, boolean isExpanded, View convertView, ViewGroup parent) {
-                return null;
+                TextView textView = getGroupTextView();
+                textView.setText(getGroup(groupPosition).toString());
+                return textView;
             }
 
             @Override
             public View getChildView(int groupPosition, int childPosition, boolean isLastChild, View convertView, ViewGroup parent) {
-                return null;
+                TextView textView = getChildTextView();
+                textView.setText(getChild(groupPosition, childPosition).toString());
+                return textView;
             }
 
             @Override
             public boolean isChildSelectable(int groupPosition, int childPosition) {
-                return false;
+                return true;
             }
         };
+        expandableListView.setAdapter(adapter);
+        //×Ó½Úµãµã»÷ÊÂ¼ş
+        expandableListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
+            @Override
+            public boolean onChildClick(ExpandableListView parent, View v, int groupPosition, int childPosition, long id) {
+                if (groupPosition == 0) {
+                    switch (childPosition){
+                        case 0:
+                            DialogModel dlgModel = new DialogModel();
+                            Dialog dlg = dlgModel.dialogSimple(MainActivity.this);
+                            dlg.show();
+                            break;
+                        case 1:
+
+                    }
+                }else if(groupPosition==4){
+                    DialogModel dlgModel = new DialogModel();
+                    Dialog dlg = dlgModel.dialogSimple(MainActivity.this);
+                    dlg.show();
+                }
+                return true;
+            }
+        });
+        //¸¸½Úµãµã»÷ÊÂ¼ş
+        expandableListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
+            @Override
+            public boolean onGroupClick(ExpandableListView parent, View v, int groupPosition, long id) {
+
+                switch (groupPosition) {
+                    case 0:
+                        return false;
+                    case 1:
+
+                        return true;
+                    case 2:
+                        break;
+                    default:
+                        return false;
+                }
+                return false;
+            }
+        });
+    }
+
+    /**
+     * ×Ó²Ëµ¥ÑùÊ½
+     * @return
+     */
+    private TextView getChildTextView() {
+        AbsListView.LayoutParams lp = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 80);
+        TextView textView = new TextView(MainActivity.this);
+        textView.setLayoutParams(lp);
+        textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
+        textView.setPadding(66, 0, 0, 0);
+        textView.setTextSize(20);
+        return textView;
+    }
+
+    /**
+     * ¸¸²Ëµ¥ÑùÊ½
+     * @return
+     */
+    private TextView getGroupTextView() {
+        AbsListView.LayoutParams lp = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 100);
+        TextView textView = new TextView(MainActivity.this);
+        textView.setLayoutParams(lp);
+        textView.setGravity(Gravity.CENTER_VERTICAL | Gravity.LEFT);
+        textView.setPadding(36, 0, 0, 0);
+        textView.setTextSize(20);
+        TextPaint tp = textView.getPaint();
+        tp.setFakeBoldText(true);
+        return textView;
     }
 
 }

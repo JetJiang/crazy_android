@@ -51,6 +51,7 @@ public class ExpandableListActivityTest extends ExpandableListActivity {
             public int getChildrenCount(int groupPosition) {
                 return arms[groupPosition].length;
             }
+
             private TextView getTextView(){
                 AbsListView.LayoutParams lp = new AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT,64);
                 TextView textView = new TextView(ExpandableListActivityTest.this);
