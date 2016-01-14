@@ -116,7 +116,10 @@ public class MainActivity extends Activity {
                             dlg.show();
                             break;
                         case 1:
-
+                            DialogModel dlgModelItem = new DialogModel();
+                            Dialog dlgItem = dlgModelItem.dialogSimple(MainActivity.this);
+                            dlgItem.show();
+                            break;
                     }
                 }else if(groupPosition==4){
                     DialogModel dlgModel = new DialogModel();

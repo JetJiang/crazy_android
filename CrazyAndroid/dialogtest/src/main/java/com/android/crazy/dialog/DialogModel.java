@@ -35,4 +35,29 @@ public class DialogModel {
         });
         return builder.create();
     }
+    public Dialog dialogItem(final Context context){
+        final String[] items = new String[]{"Android","iOS","PHP","Java"};
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setIcon(android.R.drawable.ic_dialog_alert);
+        builder.setTitle("简单列表对话框");
+        builder.setItems(items, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(context, "你选中了" + items[which], Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(context, "您点击了确定键", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(context, "您点击了取消键", Toast.LENGTH_SHORT).show();
+            }
+        });
+        return builder.create();
+    }
 }
