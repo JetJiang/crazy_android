@@ -14,7 +14,7 @@ import java.util.TimerTask;
  * 思路讲解：
  * Handler的使用，需有发送方、接收方。发送方就是新线程，接收方是主线程。
  * 新线程中sendEmptyMessage发送消息，
- * 接收方通过handlerMessage方法接收消息
+ * 接收方通过handleMessage方法接收消息
  */
 public class MainActivity extends Activity {
 
