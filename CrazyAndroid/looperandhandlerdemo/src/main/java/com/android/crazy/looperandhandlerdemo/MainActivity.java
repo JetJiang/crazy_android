@@ -3,16 +3,12 @@ package com.android.crazy.looperandhandlerdemo;
 import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Looper;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.android.crazy.looperandhandlerdemo.thread.CalThread;
 
 /**
  * 通过Looper和Handler结合来模拟在新线程中计算质数
@@ -20,9 +16,9 @@ import java.util.List;
 public class MainActivity extends Activity {
 
     private EditText editText;
-    private TextView numText;
     private CalThread calThread;
     private TextView showText;
+    public static Handler uiHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +26,21 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         editText = (EditText) findViewById(R.id.editText);
         showText = (TextView) findViewById(R.id.showText);
+        //创建新线程实例，并启动新线程
         calThread = new CalThread();
         calThread.start();
+        //创建更新UI的Handler，并重写handleMessage方法，等待接收消息
+        uiHandler = new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                if(msg.what==123456){
+                    //获取message消息
+                    String result = msg.getData().getString("result");
+                    showText.setText(result);
+                    showText.invalidate();
+                }
+            }
+        };
     }
 
     /**
@@ -41,46 +50,15 @@ public class MainActivity extends Activity {
      */
     public void cal(View view) {
         int num = Integer.parseInt(editText.getText().toString());
-        Log.e("NUM", num + "");
         Bundle bundle = new Bundle();
         bundle.putInt("upper", num);
+        //封装message
         Message message = new Message();
         message.what = 123123;
         message.setData(bundle);
+        //发送消息给计算现成的handler，告诉其计算所有质数
         calThread.handler.sendMessage(message);
     }
 
-    /**
-     * 创建一个线程类
-     */
-    class CalThread extends Thread {
-        public Handler handler;
-        public void run() {
-            Looper.prepare();
-            handler = new Handler() {
-
-                @Override
-                public void handleMessage(Message msg) {
-                    if (msg.what == 123123) {
-                        int upperNum = msg.getData().getInt("upper");
-                        List<Integer> numList = new ArrayList<Integer>();
-                        outer:
-                        for (int i = 2; i < upperNum; i++) {
-                            for (int j = 2; j < Math.sqrt(i); j++) {
-                                if (i % j == 0) {
-                                    continue outer;
-                                }
-                            }
-                            numList.add(i);
-                        }
-//                        showText.setText(numList.toString());
-//                        showText.invalidate();
-                        Toast.makeText(MainActivity.this, numList.toString(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            };
-            Looper.loop();
-        }
-    }
 
 }
