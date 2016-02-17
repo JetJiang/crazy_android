@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/CrazyAndroid.iml" filepath="$PROJECT_DIR$/CrazyAndroid.iml" />
       <module fileurl="file://$PROJECT_DIR$/activitylifetest/activitylifetest.iml" filepath="$PROJECT_DIR$/activitylifetest/activitylifetest.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/asyncdemo/asyncdemo.iml" filepath="$PROJECT_DIR$/asyncdemo/asyncdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/dialogtest/dialogtest.iml" filepath="$PROJECT_DIR$/dialogtest/dialogtest.iml" />
       <module fileurl="file://$PROJECT_DIR$/handlerdemo/handlerdemo.iml" filepath="$PROJECT_DIR$/handlerdemo/handlerdemo.iml" />
       <module fileurl="file://$PROJECT_DIR$/looperandhandlerdemo/looperandhandlerdemo.iml" filepath="$PROJECT_DIR$/looperandhandlerdemo/looperandhandlerdemo.iml" />
