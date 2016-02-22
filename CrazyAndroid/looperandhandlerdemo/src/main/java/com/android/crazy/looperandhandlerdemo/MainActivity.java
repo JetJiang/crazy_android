@@ -10,6 +10,9 @@ import android.widget.TextView;
 
 import com.android.crazy.looperandhandlerdemo.thread.CalThread;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 通过Looper和Handler结合来模拟在新线程中计算质数
  */

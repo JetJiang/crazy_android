@@ -1,5 +1,7 @@
 package com.android.crazy.looperandhandlerdemo.thread;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -35,18 +37,18 @@ public class CalThread extends Thread {
                         numList.add(i);
                     }
                     String result = numList.toString();
+
                     Bundle bundle = new Bundle();
                     bundle.putString("result",result);
                     Message message = new Message();
                     message.setData(bundle);
                     message.what = 123456;
                     MainActivity.uiHandler.sendMessage(message);
-//                        showText.setText(numList.toString());
-//                        showText.invalidate();
-//                        Toast.makeText(MainActivity.this, numList.toString(), Toast.LENGTH_SHORT).show();
                 }
             }
         };
+
         Looper.loop();
+
     }
 }
